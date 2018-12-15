@@ -1,4 +1,4 @@
 {
   "jwtPrivateKey": "12345",
-  "db" : "mongodb://localhost/ToDo"
+  "db" : "mongodb://rubnubnoff:xovAryk45M@ds121652.mlab.com:21652/rubnubnoff_todo_app"
 }
