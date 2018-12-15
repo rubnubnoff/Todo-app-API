@@ -19,8 +19,6 @@ if (!config.get('jwtPrivateKey')) {
 mongoose.connect(config.get('db'), { useNewUrlParser: true })
   .then(() => {
       winston.info('Connected to MongoDB...');
-      app.use('/users', users);
-      app.use('/tasks', tasks);
     })
   .catch((e) => winston.error(e.message));
 mongoose.set('useCreateIndex', true);
@@ -31,6 +29,8 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/users', users);
+app.use('/tasks', tasks);
 app.use(errorHandlerMiddleware);
 
 const port = process.env.port || 3000;
