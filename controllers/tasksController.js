@@ -1,12 +1,8 @@
 const Task = require('../models/Task');
-const {validateTask} = require('../middleware/validationMiddleware');
 const _ = require('lodash');
 
 module.exports = {
     createTask: async (req, res) => {
-        const {error} = validateTask(req.body);
-        if(error) return res.status(400).send(error.details[0].message);
-
         const task = await Task({
             text: req.body.text,
             status: req.body.status,
@@ -16,9 +12,7 @@ module.exports = {
         res.send(_.pick(task, ['text', 'status', 'createDate']));
     },
     updateTask: async (req, res) => {
-        const {error} = validateTask(req.body);
-        if(error) return res.status(400).send(error.details[0].message);
-            
+           
         const task = await Task.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true });
         if(!task) return res.status(404).send('You don\'t have that task yet...'); 
 

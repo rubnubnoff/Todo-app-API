@@ -1,12 +1,13 @@
+
 API
 
 Регистрация пользователя:    POST   http://localhost:3000/users/signup
 Аутентификация пользователя: POST   http://localhost:3000/users/login
 
-Получение списка задач:      GET    http://localhost:3000tasks/getTasks
-Создание задачи:             POST   http://localhost:3000tasks/createTask
-Изменение задачи:            PUT    http://localhost:3000tasks/updateTask/:id
-Удаление задачи:             DELETE http://localhost:3000tasks/deleteTask/:id
+Получение списка задач:      GET    http://localhost:3000/tasks/tasks
+Создание задачи:             POST   http://localhost:3000/tasks/task
+Изменение задачи:            PUT    http://localhost:3000/tasks/task/:id
+Удаление задачи:             DELETE http://localhost:3000/tasks/task/:id
 
 
 JSON шаблоны
@@ -32,3 +33,4 @@ JSON шаблоны
 
 
 Александр Самсонов
+>>>>>>> 5206d42c1b91f886578b49c7237b48de1a9adec9

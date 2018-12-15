@@ -1,13 +1,8 @@
 const User = require('../models/User');
-const {validateUser, validateLogin} = require('../middleware/validationMiddleware');
 const bcrypt = require('bcrypt');
-
 
 module.exports = {
     signup: async function(req, res) {
-        const {error} = validateUser(req.body);
-        if(error) return res.status(400).send(error.details[0].message);
-
         let user = await User.findOne({email: req.body.email});
         if(user) return res.status(400).send('User already registered...');
 
@@ -23,9 +18,6 @@ module.exports = {
         res.send({message : 'User added successfully!!!'});
     },
     login: async function(req, res) {
-        const {error} = validateLogin(req.body);
-        if(error) return res.status(400).send(error.details[0].message);
-
         const user = await User.findOne({email: req.body.email});
         if(!user) return res.status(400).send('Invalid email/password');
 
