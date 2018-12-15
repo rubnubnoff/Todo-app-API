@@ -28,7 +28,9 @@ app.use(cors());
 
 app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.get('/', (req, res) => {
+  res.send('Hello');
+});
 app.use('/users', users);
 app.use('/tasks', tasks);
 app.use(errorHandlerMiddleware);
