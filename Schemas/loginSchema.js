@@ -1,4 +1,4 @@
-const Joi = require('Joi');
+const Joi = require('joi');
 
 const loginSchema = {
     email: Joi.string().email().required(),
