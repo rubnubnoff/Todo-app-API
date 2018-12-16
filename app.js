@@ -26,7 +26,7 @@ mongoose.set('useCreateIndex', true);
 app.use(logger('combined', { stream: winston.stream })); 
 app.use(cors({
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': ['Content-Type', 'x-auth-token']
+  'Access-Control-Expose-Headers': ['Content-Type', 'x-auth-token']
 }));
 
 app.use(bodyParser.json({ limit: '10kb' }));
