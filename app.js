@@ -24,7 +24,10 @@ mongoose.connect(config.get('db'), { useNewUrlParser: true })
 mongoose.set('useCreateIndex', true);
 
 app.use(logger('combined', { stream: winston.stream })); 
-app.use(cors());
+app.use(cors({
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': ['Content-Type', 'x-auth-token']
+}));
 
 app.use(bodyParser.json({ limit: '10kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
