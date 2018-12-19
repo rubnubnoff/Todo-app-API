@@ -7,5 +7,5 @@ const { signup, login, logout } = require('../controllers/usersController');
 
 router.post('/signup', validationMiddleware(userSchema), signup);
 router.post('/login', validationMiddleware(loginSchema), login);
-router.post('/logout', validationMiddleware(loginSchema), logout);
+router.get('/logout', validationMiddleware(loginSchema), logout);
 module.exports = router;
