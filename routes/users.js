@@ -3,10 +3,9 @@ const router = express.Router();
 const userSchema = require('../Schemas/userSchema');
 const loginSchema = require('../Schemas/loginSchema');
 const validationMiddleware = require('../middleware/validationMiddleware');
-const authenticationMiddleware = require('../middleware/autnetificationMiddleware');
 const { signup, login, logout } = require('../controllers/usersController');
 
 router.post('/signup', validationMiddleware(userSchema), signup);
 router.post('/login', validationMiddleware(loginSchema), login);
-router.get('/logout', authenticationMiddleware, logout);
+router.get('/logout', logout);
 module.exports = router;
