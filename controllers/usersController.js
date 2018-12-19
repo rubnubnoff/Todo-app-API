@@ -2,7 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 module.exports = {
-    signup: async function(req, res) {
+    signup: async (req, res) => {
         let user = await User.findOne({email: req.body.email});
         if(user) return res.status(400).send('User already registered...');
 
@@ -17,7 +17,7 @@ module.exports = {
 
         res.send({message : 'User added successfully!!!'});
     },
-    login: async function(req, res) {
+    login: async (req, res) => {
         const user = await User.findOne({email: req.body.email});
         if(!user) return res.status(400).send('Invalid email/password');
 
@@ -26,5 +26,8 @@ module.exports = {
 
         const token = user.getAuthToken();
         res.header('x-auth-token', token).send({ message:'Successfully login!!!'});
+    },
+    logout: async (req, res) => {
+        res.header('x-auth-token', undefined).send({ message:'Successfully logOut!!!'});
     }
 };
